@@ -1,220 +1,197 @@
 <!DOCTYPE html>
 <html lang="te">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>అమ్మకు ప్రేమతో</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Noto Serif Telugu', serif;
     }
 
-    body {
-      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
-      overflow-x: hidden;
+    html, body {
+      height: 100%;
+      font-family: 'Noto Serif Telugu', serif;
+      background-color: #fef9f4;
+      color: #3e2723;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     .landing {
-      height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      padding: 2rem;
       text-align: center;
-      padding: 20px;
+      min-height: 100vh;
+      animation: fadeIn 2s ease-in;
     }
 
     .landing h1 {
-      font-size: clamp(2em, 5vw, 3em);
-      color: #c2185b;
-      margin-bottom: 20px;
-      animation: fadeIn 2s ease-in-out;
+      font-size: clamp(1.5rem, 6vw, 3rem);
+      margin-bottom: 1.5rem;
+      color: #6a1b9a;
     }
 
     .landing img {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
+      width: 50vw;
+      max-width: 250px;
+      height: auto;
       border-radius: 50%;
-      border: 5px solid #c2185b;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 3s ease-in-out;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
 
     .landing button {
-      margin-top: 30px;
-      padding: 12px 24px;
-      background-color: #c2185b;
-      color: white;
+      font-size: 1.2rem;
+      padding: 0.8rem 2rem;
+      background-color: #8e24aa;
+      color: #fff;
       border: none;
-      border-radius: 30px;
-      font-size: 1.2em;
+      border-radius: 50px;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
     }
 
     .landing button:hover {
-      background-color: #ad1457;
+      transform: scale(1.05);
     }
 
-    .content {
-      padding: 80px 20px 20px 80px;
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.3em;
-      color: #4a148c;
-      line-height: 2em;
+    #tribute {
+      padding: 1rem;
       text-align: center;
     }
 
     .line {
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      font-size: clamp(1.1rem, 4vw, 1.8rem);
+      margin: 1rem 0;
+      transition: opacity 1s ease;
     }
 
-    .visible {
+    .line.visible {
       opacity: 1;
     }
 
-    .surprise {
-      height: 100vh;
-      display: flex;
+    #surprise {
+      display: none;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      padding: 2rem;
       text-align: center;
-      padding: 40px 20px;
-      font-size: 1.8em;
-      color: #880e4f;
-      background-color: #fff0f5;
     }
 
-    .surprise img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid #880e4f;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-      margin-bottom: 30px;
+    #surprise img {
+      width: 80%;
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 1.2rem;
     }
 
-    .surprise h1 {
-      font-size: clamp(2em, 6vw, 2.8em);
-      margin-bottom: 20px;
+    #surprise h2 {
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      color: #4e342e;
+      margin-bottom: 1rem;
     }
 
-    .surprise p {
-      font-size: clamp(1.2em, 4vw, 1.6em);
+    #surprise p {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      line-height: 1.6;
+      color: #5d4037;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 600px) {
-      .landing img,
-      .surprise img {
-        width: 150px;
-        height: 150px;
+    @media (max-width: 480px) {
+      .landing {
+        padding: 1rem;
       }
-
+      .landing img {
+        width: 60vw;
+      }
       .landing button {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
-
-      .content {
-        font-size: 1.1em;
-        padding: 60px 15px;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <audio id="bg-music" src="river-flows.mp3" loop></audio>
-
-  <section class="landing">
+  <div class="landing">
     <h1>అమ్మకు ప్రేమతో</h1>
-    <img src="amma.png" alt="Mom and Me">
-    <button onclick="startTribute()"> వంశీ </button>
-  </section>
+    <img src="amma.png" alt="అమ్మ ఫోటో" />
+    <button onclick="startTribute()">వంశీ</button>
+  </div>
 
-  <section class="content" id="tribute">
-    <div class="line">అమ్మ, ఇది మనం కలిసి జరుపుకుంటున్న నీ 18వ పుట్టినరోజు.</div>
-    <div class="line">ఈ 18 ఏళ్లలో నేను నీకు ఎంత ఆనందాన్ని ఇచ్చానో తెలియదు...</div>
-    <div class="line">కానీ నువ్విచ్చిన ప్రేమ, సహనం, బలం — మాటల్లో చెప్పలేను.</div>
-    <div class="line">నీవే నా బలం , నా సహనం, నా ప్రోత్సాహం.</div>
-    <div class="line">నేను కింద పడిపోయినప్పుడు నన్ను పట్టుకునే చేయి నీవే.</div>
-    <div class="line">నేను మెరిసే ప్రతి క్షణంలో నన్ను గర్వంగా చూసే నయనం నీవే.</div>
-    <div class="line">నేను ఇంకా జీవితాన్ని అర్థం చేసుకుంటున్న అమ్మ...</div>
-    <div class="line">కానీ ఒక విషయం మాత్రం నిశ్చితం :</div>
-    <div class="line">ఈ ప్రపంచంలో నన్ను నీవిలా ప్రేమించే వారు ఎవరూ ఉండరమ్మా.</div>
-  </section>
+  <div id="tribute"></div>
 
-  <section class="surprise" id="surprise" style="display:none;">
-    <img src="img.png" alt="Mom">
+  <div id="surprise">
+    <img src="img.png" alt="Mother and Child Image" />
     <h1>హ్యాపీ బర్త్‌డే అమ్మ!</h1>
     <p>ప్రేమతో - వంశీ 💗</p>
-  </section>
+  </div>
+
+  <audio id="bgMusic" src="river-flows.mp3" preload="auto"></audio>
 
   <script>
-    const audio = document.getElementById('bg-music');
+    const lines = [
+       "అమ్మా, ఇది మనిద్దరి కలిసి జరుపుకునే 18వ పుట్టినరోజు 🎂",
+      "ఈ 18 ఏళ్లలో నీకు నేను ఎంత ఆనందాన్ని ఇచ్చానో నాకు తెలియదు...",
+      "కానీ నువ్వు నాకు ఇచ్చిన ప్రేమ, సహనం, బలం – అది అనంతం ❤️",
+      "నువ్వు నా ఇంటి వెలుగు, నా రక్షణ కవచం, నా జీవిత పునాది.",
+      "నేను కుదిరినప్పుడు – నిశబ్దంగా వెనక నిలబడి నన్ను లేపే శక్తివంతురాలివి",
+      "నేను మెరుస్తున్నప్పుడు – నన్ను అంతగా మెప్పించేది నీవే!",
+      "ప్రపంచమంతా నన్ను మర్చిపోయినా – నీవు మాత్రం ఎన్నడూ మర్చిపోలేదు.",
+      "నా జీవితానికి నేను అర్థం చేసుకుంటున్న ప్రయాణంలో ఉన్నాను అమ్మా...",
+      "కానీ ఒక్క విషయం మాత్రం నాకు కచ్చితంగా తెలుసు:",
+      "ఈ లోకంలో నన్ను నువ్వు ప్రేమించినంతగా ఎవరూ ప్రేమించలేరు.",
+      "నా జీవితం నువ్వు పుట్టిన రోజు నుంచి ప్రారంభమైంది.",
+      "నేను పుట్టినప్పటి నుంచి ప్రతి రోజు ఒక కొత్త మనిషిగా మారుతున్న అమ్మ నీవే!"
+    ];
+
+    const tributeContainer = document.getElementById("tribute");
+    const surprise = document.getElementById("surprise");
+    const music = document.getElementById("bgMusic");
 
     function startTribute() {
       document.querySelector('.landing').style.display = 'none';
-      document.getElementById('tribute').scrollIntoView({ behavior: 'smooth' });
-      audio.play().catch(() => {
-        console.log('Autoplay blocked. Tap to start music.');
+      music.play().catch(() => {
+        alert("Please tap to enable audio.");
       });
-      revealLines();
-    }
 
-    function launchConfetti() {
-      confetti({
-        particleCount: 200,
-        spread: 120,
-        origin: { y: 0.6 }
+      lines.forEach((text, index) => {
+        const line = document.createElement("div");
+        line.className = "line";
+        line.textContent = text;
+        tributeContainer.appendChild(line);
+
+        setTimeout(() => {
+          line.classList.add("visible");
+          line.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, index * 4000);
       });
-    }
 
-    function revealLines() {
-      const lines = document.querySelectorAll('.line');
-      let index = 0;
-      const interval = setInterval(() => {
-        if (index < lines.length) {
-          lines[index].classList.add('visible');
-          index++;
-        } else {
-          clearInterval(interval);
-          setTimeout(showSurprise, 4000);
-        }
-      }, 4000);
-    }
-
-    function showSurprise() {
-      const surprise = document.getElementById('surprise');
-      surprise.style.display = 'flex';
-      surprise.scrollIntoView({ behavior: 'smooth' });
-      launchConfetti();
+      setTimeout(() => {
+        surprise.style.display = "flex";
+        surprise.scrollIntoView({ behavior: "smooth", block: "center" });
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.6 }
+        });
+      }, lines.length * 4000 + 2000);
     }
   </script>
 </body>
-
 </html>

@@ -16,7 +16,7 @@
     html, body {
       height: 100%;
       font-family: 'Noto Serif Telugu', serif;
-      background-color: #fef9f4;
+      background: linear-gradient(to bottom, #fdf0f0, #ffe2ec, #fff8f0);
       color: #3e2723;
       scroll-behavior: smooth;
       overflow-x: hidden;
@@ -42,9 +42,10 @@
     .landing img {
       width: 50vw;
       max-width: 250px;
-      height: auto;
+      aspect-ratio: 1 / 1;
       border-radius: 50%;
       margin-bottom: 1.5rem;
+      object-fit: cover;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
 
@@ -72,7 +73,7 @@
     .line {
       opacity: 0;
       font-size: clamp(1.1rem, 4vw, 1.8rem);
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       transition: opacity 1s ease;
     }
 
@@ -87,23 +88,27 @@
       justify-content: center;
       padding: 2rem;
       text-align: center;
+      height: 100vh;
     }
 
     #surprise img {
-      width: 80%;
-      max-width: 300px;
-      height: auto;
-      margin-bottom: 1.2rem;
+      width: 70vw;
+      max-width: 280px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      margin-bottom: 1.5rem;
     }
 
-    #surprise h2 {
-      font-size: clamp(1.2rem, 4vw, 2rem);
-      color: #4e342e;
+    #surprise h1 {
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
+      color: #880e4f;
       margin-bottom: 1rem;
     }
 
     #surprise p {
-      font-size: clamp(1rem, 4vw, 1.4rem);
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
       line-height: 1.6;
       color: #5d4037;
     }
@@ -117,12 +122,19 @@
       .landing {
         padding: 1rem;
       }
+
       .landing img {
         width: 60vw;
+        aspect-ratio: 1 / 1;
       }
+
       .landing button {
         padding: 0.6rem 1.5rem;
         font-size: 1rem;
+      }
+
+      #surprise img {
+        width: 80vw;
       }
     }
   </style>
@@ -146,7 +158,7 @@
 
   <script>
     const lines = [
-       "అమ్మ, ఇది మనం కలిసి జరుపుకుంటున్న నీ 18వ పుట్టినరోజు🎂.",
+      "అమ్మ, ఇది మనం కలిసి జరుపుకుంటున్న నీ 18వ పుట్టినరోజు🎂.",
       "ఈ 18 ఏళ్లలో నేను నీకు ఎంత ఆనందాన్ని ఇచ్చానో తెలియదు...",
       "కానీ నువ్విచ్చిన ప్రేమ, సహనం, బలం — మాటల్లో చెప్పలేను.",
       "నీవే నా బలం , నా సహనం, నా ప్రోత్సాహం.",
@@ -155,7 +167,7 @@
       "ప్రపంచమంతా నన్ను మర్చిపోయినా – నీవు మాత్రం ఎన్నడూ మర్చిపోలేదు.",
       "నేను ఇంకా జీవితాన్ని అర్థం చేసుకుంటున్న అమ్మ...",
       "కానీ ఒక విషయం మాత్రం నిశ్చితం :",
-      "ఈ ప్రపంచంలో నన్ను నీవిలా ప్రేమించే వారు ఎవరూ ఉండరమ్మా.",
+      "ఈ ప్రపంచంలో నన్ను నీలా ప్రేమించే వారు ఎవరూ ఉండరమ్మా."
     ];
 
     const tributeContainer = document.getElementById("tribute");
@@ -177,7 +189,7 @@
         setTimeout(() => {
           line.classList.add("visible");
           line.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, index * 4000);
+        }, index * 5000);
       });
 
       setTimeout(() => {
@@ -188,7 +200,7 @@
           spread: 90,
           origin: { y: 0.6 }
         });
-      }, lines.length * 4000 + 2000);
+      }, lines.length * 5000 + 3000);
     }
   </script>
 </body>
